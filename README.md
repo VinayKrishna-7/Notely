@@ -184,12 +184,4 @@ npm --prefix server run build
 
 ---
 
-## 📄 License
 
-Copyright (c) 2026 Vinay Krishna. All Rights Reserved.
-
-This project is released under a **Custom Source-Available Portfolio License**:
-- **Permitted**: You are welcome to view, inspect, clone, and run this project locally on your machine for personal evaluation, educational review, and testing.
-- **Prohibited**: You may **not** modify, redistribute, republish, reuse components/code in other projects, create derivative works, or commercially exploit this source code without explicit prior written permission.
-
-See the full [LICENSE](LICENSE) file for complete details.
