@@ -9,7 +9,7 @@
 [![TanStack Query](https://img.shields.io/badge/TanStack_Query-v5-FF4154?logo=react-query&logoColor=white)](https://tanstack.com/query)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All_Rights_Reserved-red.svg)](LICENSE)
 
 ---
 
@@ -186,4 +186,10 @@ npm --prefix server run build
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+Copyright (c) 2026 Vinay Krishna. All Rights Reserved.
+
+This project is released under a **Custom Source-Available Portfolio License**:
+- **Permitted**: You are welcome to view, inspect, clone, and run this project locally on your machine for personal evaluation, educational review, and testing.
+- **Prohibited**: You may **not** modify, redistribute, republish, reuse components/code in other projects, create derivative works, or commercially exploit this source code without explicit prior written permission.
+
+See the full [LICENSE](LICENSE) file for complete details.
