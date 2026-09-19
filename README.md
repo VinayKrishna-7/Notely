@@ -1,6 +1,6 @@
-# ✦ Notely — Production-Grade Personal Knowledge & Notes Application
+# ✦ Notely — Personal Knowledge & Notes Application
 
-> **A modern, lightning-fast personal knowledge workspace built with advanced React 19, TypeScript, Tailwind CSS, TanStack Query, and Node.js.**
+> **Notely is a full-stack personal notes and knowledge management application built with React, TypeScript, Node.js, Express, and MongoDB. It supports Markdown notes, tags, search, version history, wiki-style links, offline support, and customizable workspace features.**
 
 [![React 19](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -19,14 +19,14 @@
 
 ---
 
-## 🌟 Core Highlights & Advanced React Architecture
+## 🌟 Core Highlights & Features
 
 ### ⚛️ Advanced React 19 & Frontend Engineering
-- **0ms Instant Note Switching**: Leverages TanStack Query cache hydration (`initialData`) and hover prefetching to render note content with zero delay and no loading layout shifts.
+- **Instant Note Switching**: Leverages TanStack Query cache hydration (`initialData`) and hover prefetching to render note content with zero delay and no loading layout shifts.
 - **Debounced Markdown Editor Engine**: Real-time auto-saving with debounced mutation queues, visual sync indicators, and split-pane side-by-side editing.
 - **Time Machine Version History**: Non-destructive snapshot history with visual diff calculation (lines added/deleted) and 1-click restore.
 - **Bi-Directional Wiki-Linking (`[[Note Title]]`)**: Real-time markdown parser detecting note references, interactive autocomplete popovers, and automatic backlink graph generation.
-- **Customizable Live Clock System**: Reusable `useClock` hook with a centralized singleton ticker (1 timer across the whole app, zero memory leaks) and 8 customizable clock styles.
+- **Customizable Live Clock System**: Reusable `useClock` hook with a centralized singleton ticker (“Centralized clock ticker to avoid creating separate timers for each clock component.”) and 8 customizable clock styles.
 - **Physics-Based Drag-and-Drop Reordering (`@dnd-kit`)**: Smooth keyboard-accessible reordering with optimistic UI updates.
 - **Global Omnisearch Command Palette (`Ctrl+K` / `Cmd+K`)**: Multi-token search parser (`tag:`, `is:pinned`, `is:favorite`, `is:archived`) with keyboard navigation and text match highlighting.
 - **PWA & Offline Mutation Queue (`vite-plugin-pwa`)**: Full offline capability with background sync conflict detection and service worker caching.
