@@ -1,88 +1,68 @@
 # Notely
 
-A full-stack personal notes and knowledge management application built with React, TypeScript, Express, and MongoDB.
+A personal markdown notes and workspace application built with React, Node.js, and MongoDB.
 
 ## Features
 
-- **Markdown Editor**: Split-pane live preview, syntax highlighting, and debounced auto-saving.
-- **Bi-directional Linking**: Link between notes using `[[Note Title]]` wiki syntax with backlink discovery.
-- **Version History**: Review revisions with inline diff comparisons and one-click restore.
-- **Organization**: Tags, favorites, pinned notes, archiving, and trash recovery.
-- **Command Palette**: Fast keyboard navigation and omnisearch (`Ctrl+K` / `Cmd+K`).
-- **Offline Support**: Progressive Web App with offline caching and background synchronization.
-- **Customizable Workspace**: System/dark/light themes and customizable workspace widgets.
+- Markdown editor with split live preview and debounced auto-save
+- Bi-directional note linking (`[[Note Title]]`) with backlinks
+- Revision history with diff inspection and one-click restore
+- Tagging, favorites, pinned notes, search, and archive
+- Fast omnisearch command palette (`Cmd/Ctrl + K`)
+- Dark and light theme support with instant switching
 
 ## Tech Stack
 
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, TanStack Query
-- **Backend**: Node.js, Express, TypeScript, Mongoose, Zod
+- **Backend**: Node.js, Express, TypeScript, Mongoose
 - **Database**: MongoDB
 
-## Getting Started
+## Quick Start
 
-### Prerequisites
+### 1. Clone & Install
 
-- Node.js 18+
-- MongoDB running locally or a remote MongoDB connection string
+```bash
+git clone https://github.com/VinayKrishna-7/Notely.git
+cd Notely
+npm run install:all
+```
 
-### Installation
+### 2. Environment Setup
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/VinayKrishna-7/Notely.git
-   cd Notely
-   ```
+```bash
+cp server/.env.example server/.env
+cp client/.env.example client/.env
+```
 
-2. Install dependencies:
-   ```bash
-   npm run install:all
-   ```
+### 3. Seed Database (Optional)
 
-3. Configure environment variables:
-   ```bash
-   cp server/.env.example server/.env
-   cp client/.env.example client/.env
-   ```
+Populate sample notes and the demo user:
 
-4. (Optional) Seed the database with sample data:
-   ```bash
-   npm run seed
-   ```
-   *Demo login: `demo@notely.app` / `Password123!`*
+```bash
+npm run seed
+```
 
-### Development
+- **Demo Email**: `demo@notely.app`
+- **Demo Password**: `Password123!`
 
-Start both backend and frontend development servers:
+### 4. Run
 
 ```bash
 npm run dev
 ```
 
-- Frontend: [http://localhost:5173](http://localhost:5173)
-- Backend: [http://localhost:5000](http://localhost:5000)
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000
 
-To run them individually:
-```bash
-npm run dev:server
-npm run dev:client
-```
+## Scripts
 
-### Testing
-
-```bash
-# Run all tests
-npm test
-
-# Run frontend or backend tests individually
-npm run test:client
-npm run test:server
-```
-
-### Production Build
-
-```bash
-npm run build
-```
+| Command | Description |
+|---|---|
+| `npm run dev` | Run client and server concurrently |
+| `npm run dev:client` | Run frontend client only |
+| `npm run dev:server` | Run backend API server only |
+| `npm test` | Run all test suites |
+| `npm run build` | Build client and server for production |
 
 ## License
 
