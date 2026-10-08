@@ -2,10 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../../types';
 import { Dropdown } from '../ui/dropdown';
-import { Button } from '../ui/button';
 import {
   Search,
-  Plus,
   Moon,
   Sun,
   LogOut,
@@ -94,15 +92,6 @@ export function Header({
           size="header"
           className="hidden md:inline-flex px-2 py-1 rounded-md bg-muted/30 border border-border/40 hover:bg-muted/60 transition-colors"
         />
-
-        <Button
-          size="sm"
-          onClick={() => navigate('/notes/new')}
-          leftIcon={<Plus className="h-4 w-4" />}
-          className="hidden sm:inline-flex"
-        >
-          Create Note
-        </Button>
 
         {/* Instant 1-Click Theme Switcher */}
         <button
