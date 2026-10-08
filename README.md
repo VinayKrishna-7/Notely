@@ -63,7 +63,3 @@ npm run dev
 | `npm run dev:server` | Run backend API server only |
 | `npm test` | Run all test suites |
 | `npm run build` | Build client and server for production |
-
-## License
-
-MIT
