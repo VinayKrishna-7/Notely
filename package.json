@@ -4,6 +4,8 @@
   "description": "Production Full-Stack MERN Notes & Workspace SaaS Application",
   "private": true,
   "scripts": {
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev:server\" \"npm run dev:client\"",
+    "install:all": "npm --prefix server install && npm --prefix client install",
     "dev:client": "npm --prefix client run dev",
     "dev:server": "npm --prefix server run dev",
     "build:client": "npm --prefix client run build",
@@ -14,7 +16,19 @@
     "test:server": "npm --prefix server test",
     "test": "npm run test:server && npm run test:client"
   },
-  "keywords": ["notely", "mern", "react", "typescript", "mongodb", "express", "tailwind", "tanstack-query"],
+  "keywords": [
+    "notely",
+    "mern",
+    "react",
+    "typescript",
+    "mongodb",
+    "express",
+    "tailwind",
+    "tanstack-query"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
 }

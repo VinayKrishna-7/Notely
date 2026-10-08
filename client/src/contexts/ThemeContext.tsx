@@ -11,29 +11,35 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function getSystemTheme(): 'light' | 'dark' {
+  if (typeof window === 'undefined') return 'light';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function applyThemeClass(resolved: 'light' | 'dark') {
+  if (typeof window === 'undefined') return;
+  const root = window.document.documentElement;
+  root.classList.remove('light', 'dark');
+  root.classList.add(resolved);
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     const saved = localStorage.getItem('notely_theme') as Theme;
     return saved || 'system';
   });
 
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>(() => {
+    const saved = typeof window !== 'undefined' ? (localStorage.getItem('notely_theme') as Theme) : null;
+    const initial = saved === 'dark' || saved === 'light' ? saved : getSystemTheme();
+    applyThemeClass(initial);
+    return initial;
+  });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      root.classList.add(systemTheme);
-      setResolvedTheme(systemTheme);
-      return;
-    }
-
-    root.classList.add(theme);
-    setResolvedTheme(theme);
+    const resolved = theme === 'system' ? getSystemTheme() : theme;
+    applyThemeClass(resolved);
+    setResolvedTheme(resolved);
   }, [theme]);
 
   // Listen to system preference changes if system theme is selected
@@ -41,10 +47,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (theme !== 'system') return;
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
-      const root = window.document.documentElement;
-      root.classList.remove('light', 'dark');
       const newTheme = mediaQuery.matches ? 'dark' : 'light';
-      root.classList.add(newTheme);
+      applyThemeClass(newTheme);
       setResolvedTheme(newTheme);
     };
 
@@ -54,11 +58,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = (newTheme: Theme) => {
     localStorage.setItem('notely_theme', newTheme);
+    const resolved = newTheme === 'system' ? getSystemTheme() : newTheme;
+    // Synchronously apply class immediately so theme changes instantaneously
+    applyThemeClass(resolved);
     setThemeState(newTheme);
+    setResolvedTheme(resolved);
   };
 
   const toggleTheme = () => {
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+    const next = resolvedTheme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
   };
 
   return (

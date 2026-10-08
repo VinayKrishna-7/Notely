@@ -8,19 +8,19 @@ import {
   Plus,
   Moon,
   Sun,
-  Laptop,
   LogOut,
   User as UserIcon,
   Settings,
   Menu,
 } from 'lucide-react';
+import { useTheme } from '../../contexts/ThemeContext';
 import { SyncIndicator } from '../common/SyncIndicator';
 import { ClockWidget } from '../clock/ClockWidget';
 
 interface HeaderProps {
   user: User | null;
-  theme: 'light' | 'dark' | 'system';
-  onThemeChange: (theme: 'light' | 'dark' | 'system') => void;
+  theme?: 'light' | 'dark' | 'system';
+  onThemeChange?: (theme: 'light' | 'dark' | 'system') => void;
   onOpenCommandPalette: () => void;
   onOpenMobileMenu: () => void;
   onLogout: () => void;
@@ -29,41 +29,13 @@ interface HeaderProps {
 
 export function Header({
   user,
-  theme,
-  onThemeChange,
   onOpenCommandPalette,
   onOpenMobileMenu,
   onLogout,
   className,
 }: HeaderProps) {
   const navigate = useNavigate();
-
-  const themeIcon =
-    theme === 'dark' ? (
-      <Moon className="h-4 w-4" />
-    ) : theme === 'light' ? (
-      <Sun className="h-4 w-4" />
-    ) : (
-      <Laptop className="h-4 w-4" />
-    );
-
-  const themeMenuItems = [
-    {
-      label: 'Light',
-      icon: <Sun className="h-4 w-4" />,
-      onClick: () => onThemeChange('light'),
-    },
-    {
-      label: 'Dark',
-      icon: <Moon className="h-4 w-4" />,
-      onClick: () => onThemeChange('dark'),
-    },
-    {
-      label: 'System',
-      icon: <Laptop className="h-4 w-4" />,
-      onClick: () => onThemeChange('system'),
-    },
-  ];
+  const { resolvedTheme, toggleTheme } = useTheme();
 
   const userMenuItems = [
     {
@@ -132,19 +104,20 @@ export function Header({
           Create Note
         </Button>
 
-        {/* Theme Switcher Dropdown */}
-        <Dropdown
-          trigger={
-            <button
-              type="button"
-              className="p-2 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-              aria-label="Toggle theme"
-            >
-              {themeIcon}
-            </button>
-          }
-          items={themeMenuItems}
-        />
+        {/* Instant 1-Click Theme Switcher */}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="p-2 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-150 active:scale-90 cursor-pointer"
+          aria-label={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          title={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        >
+          {resolvedTheme === 'dark' ? (
+            <Sun className="h-4 w-4 text-amber-400 hover:rotate-12 transition-transform duration-200" />
+          ) : (
+            <Moon className="h-4 w-4 text-zinc-700 hover:-rotate-12 transition-transform duration-200" />
+          )}
+        </button>
 
         {/* User Profile Avatar / Menu */}
         <Dropdown

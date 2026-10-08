@@ -15,7 +15,8 @@ describe('Notely API Integration Tests', () => {
   beforeAll(async () => {
     // Set NODE_ENV to test to avoid terminal logs during tests
     process.env.NODE_ENV = 'test';
-    await connectDB();
+    const testUri = process.env.TEST_MONGODB_URI || 'mongodb://127.0.0.1:27017/notely_test';
+    await connectDB(testUri);
   });
 
   afterAll(async () => {
