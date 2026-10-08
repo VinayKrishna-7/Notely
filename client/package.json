@@ -1,6 +1,10 @@
 {
   "name": "client",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VinayKrishna-7/Notely.git"
+  },
   "version": "0.0.0",
   "type": "module",
   "scripts": {

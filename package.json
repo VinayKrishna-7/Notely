@@ -2,6 +2,11 @@
   "name": "notely-monorepo",
   "version": "1.0.0",
   "description": "Production Full-Stack MERN Notes & Workspace SaaS Application",
+  "homepage": "https://github.com/VinayKrishna-7/Notely",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VinayKrishna-7/Notely.git"
+  },
   "private": true,
   "scripts": {
     "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev:server\" \"npm run dev:client\"",

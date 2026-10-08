@@ -2,6 +2,10 @@
   "name": "notely-server",
   "version": "1.0.0",
   "description": "Production REST API for Notely Notes Application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VinayKrishna-7/Notely.git"
+  },
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
